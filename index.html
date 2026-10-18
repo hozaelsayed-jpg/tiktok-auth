@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفويض TikTok - أنوار الفرقان</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f6f9; color: #333; display: flex; flex-direction: column; align-items: center; padding: 30px 15px; margin: 0; }
+    .card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 550px; width: 100%; text-align: center; }
+    h2 { color: #1a73e8; margin-top: 0; }
+    .code-box { background: #f1f3f4; border: 1px dashed #1a73e8; border-radius: 8px; padding: 12px; font-family: monospace; font-size: 16px; word-break: break-all; margin: 15px 0; }
+    button { background: #1a73e8; color: #fff; border: none; padding: 10px 20px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #1557b0; }
+    .footer-links { margin-top: 30px; font-size: 12px; color: #777; text-align: right; max-width: 550px; width: 100%; background: #fff; padding: 15px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>أنوار الفرقان - تفويض TikTok</h2>
+    <div id="content">جاري قراءة رمز التفويض...</div>
+  </div>
+
+  <div class="footer-links">
+    <h4 id="terms">شروط الاستخدام (Terms of Service):</h4>
+    <p>هذا التطبيق مخصص لإدارة ونشر المحتوى القرآني الخاص بأنوار الفرقان على الحسابات المصرح بها.</p>
+    <h4 id="privacy">سياسة الخصوصية (Privacy Policy):</h4>
+    <p>لا يقوم التطبيق بجمع أو مشاركة بيانات المستخدم، وتُستخدم الصلاحيات لرفع ونشر الفيديوهات المحددة فقط.</p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const content = document.getElementById('content');
+    if (code) {
+      content.innerHTML = `
+        <p style="color: #137333; font-weight: bold;">✅ تم تسجيل الدخول بنجاح! كود التفويض هو:</p>
+        <div class="code-box" id="authCode">${code}</div>
+        <button onclick="copyCode()">📋 نسخ الكود</button>
+      `;
+    } else {
+      content.innerHTML = "<p>صفحة استقبال تفويض تطبيق تيك توك لأنوار الفرقان جاهزة.</p>";
+    }
+    function copyCode() {
+      navigator.clipboard.writeText(document.getElementById('authCode').innerText).then(() => alert("تم نسخ الكود!"));
+    }
+  </script>
+</body>
+</html>
